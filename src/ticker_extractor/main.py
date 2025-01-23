@@ -5,7 +5,7 @@ import uvicorn
 from fastapi import FastAPI
 from google.oauth2 import service_account
 
-from recipe import Ticker, load_tickers
+from tickers import Ticker, load_tickers
 
 
 recipes = load_tickers()
@@ -27,7 +27,6 @@ with open(google_credentials, 'r') as source:
 
 # Auth using service account with json credentials
 service_account.Credentials.from_service_account_info(info)
-
 
 
 @app.get("/")
