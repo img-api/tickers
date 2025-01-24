@@ -43,7 +43,7 @@ class Ticker:
         )
         print("DOCUMENT STORE INITIALIZED")
 
-    def get_tickers(self, ai_summary=None, title=None):
+    def get_tickers(self, title=None, summary=None):
         template = """
         Given the following information, answer the question.
 
@@ -75,11 +75,16 @@ class Ticker:
         # pipe.connect("llm.meta", "answer_builder.meta")
         pipe.connect("retriever", "answer_builder.documents")
 
+        if not summary:
+            news = self.news
+        else:
+            news = write_article(title, summary)
+
         result = pipe.run(
             {
-                "retriever": {"query": self.news},
-                "prompt_builder": {"news": self.news},
-                "answer_builder": {"query": self.news},
+                "retriever": {"query": news},
+                "prompt_builder": {"news": news},
+                "answer_builder": {"query": news},
             }
         )
         tickers = result["answer_builder"]["answers"][0].data
@@ -173,19 +178,23 @@ def load_news():
         articles = json.load(f)
 
         for article in articles["news"]:
-            news.append(
-                """
-                Title: {title}
-                Summary: {summary}
-                """.format(
-                    title=article["title"],
-                    summary=article["summary"],
-                )
-            )
+            news.append(write_article(article["title"], article["summary"]))
 
     print(f"{len(news)} NEWS loaded")
 
     return news
+
+
+def write_article(title, summary):
+    return (
+        """
+        Title: {title}
+        Summary: {summary}
+        """.format(
+            title=title,
+            summary=summary,
+        )
+    )
 
 
 if __name__ == '__main__':
