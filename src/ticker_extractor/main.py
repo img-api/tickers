@@ -5,12 +5,11 @@ import uvicorn
 from fastapi import FastAPI
 from google.oauth2 import service_account
 
-from tickers import Ticker, load_tickers, load_news
+from tickers import Ticker, load_news
 
 
-tickers = load_tickers()
 news = load_news()
-ticker_extractor = Ticker(tickers, news)
+ticker_extractor = Ticker(news=news, recreate_table=False)
 
 app = FastAPI()
 
@@ -32,7 +31,7 @@ service_account.Credentials.from_service_account_info(info)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return ticker_extractor.get_tickers()
 
 
 @app.post("/tickers")

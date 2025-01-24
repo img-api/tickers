@@ -43,7 +43,7 @@ class Ticker:
         )
         print("DOCUMENT STORE INITIALIZED")
 
-    def get_tickers(self, ingredients: str):
+    def get_tickers(self, ai_summary=None, title=None):
         template = """
         Given the following information, answer the question.
 
@@ -59,7 +59,8 @@ class Ticker:
 
         {{ news }}
 
-        Add the instructions for that recipe, formatted as markdown.
+        Return the stock tickers separated by commas.
+
         """
         pipe = Pipeline()
 
