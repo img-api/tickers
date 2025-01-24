@@ -29,33 +29,36 @@ PHOTOS_PATH = os.path.join(BASE_PATH, "example_food_photos")
 
 
 class Ticker:
-    def __init__(self, recipes: str):
+    def __init__(self, news=None, recreate_table=False):
+        self.news = news
+
         # Initialize PostgreSQL Document Store
         print("INITIALIZING DOCUMENT STORE")
 
         self.document_store = PgvectorDocumentStore(
             embedding_dimension=768,
             vector_function="cosine_similarity",
-            recreate_table=True,
+            recreate_table=recreate_table,
             search_strategy="hnsw",
         )
         print("DOCUMENT STORE INITIALIZED")
 
-        self.insert_documents(recipes)
-
-    def get_recipe(self, ingredients: str):
+    def get_tickers(self, ingredients: str):
         template = """
         Given the following information, answer the question.
 
         Context: 
 
         {% for document in documents %}
-            Recipe:
+            :
             {{ document.content }}
 
         {% endfor %}
 
-        Question: Could you extract all the stock tickers from the context article?
+        Question: Could you extract all the stock tickers from the this article?
+
+        {{ news }}
+
         Add the instructions for that recipe, formatted as markdown.
         """
         pipe = Pipeline()
@@ -73,14 +76,14 @@ class Ticker:
 
         result = pipe.run(
             {
-                "retriever": {"query": ingredients},
-                "prompt_builder": {"ingredients": ingredients},
-                "answer_builder": {"query": ingredients},
+                "retriever": {"query": self.news},
+                "prompt_builder": {"news": self.news},
+                "answer_builder": {"query": self.news},
             }
         )
-        recipes = result["answer_builder"]["answers"][0].data
-        print(recipes)
-        return recipes
+        tickers = result["answer_builder"]["answers"][0].data
+        print(tickers)
+        return tickers
 
     def insert_documents(self, contents):
         print("INSERTING DOCUMENTS")
@@ -121,16 +124,9 @@ class Ticker:
         return result["image_extractor"]["answer"]
 
 
-def test_ticker():
-    recipes = load_tickers()
-    manager = Ticker(recipes)
-
-    user_ingredients = "chicken"
-    manager.get_recipes(user_ingredients)
-
 
 def load_tickers():
-    print("loading RECIPES")
+    print("loading TICKERS")
 
     tickers = []
 
@@ -141,20 +137,24 @@ def load_tickers():
 
         with open(full_path) as f:
             # read the file as json
-            companies = json.load()
+            companies = json.load(f)
 
             for company in companies["companies"]:
+                try:
+                    company_name = company["company_name"]
+                except KeyError as e:
+                    print(e)
+                    continue
+
+                exchange_tickers = ",".join(company["exchange_tickers"])
+                related_exchange_tickers =  ",".join(company.get("related_exchange_tickers", []))
+
                 tickers.append(
-                    """
+                    f"""
                     Company name: {company_name}
                     Exchange tickers: {exchange_tickers},
                     Related exchange tickers: {related_exchange_tickers}
-                    """.format(
-                        company_name=company["company_name"],
-                        exchange_tickers=f"{','.join(company['exchange_tickers'])}"
-                        related_exchange_tickers=f"{','.join(company['related_exchange_tickers'])}"
-
-                    )
+                    """
                 )
 
     print(f"{len(tickers)} TICKERS loaded")
@@ -162,5 +162,32 @@ def load_tickers():
     return tickers
 
 
+def load_news():
+    print("loading NEWS")
+
+    news = []
+
+    with open(os.path.join(BASE_PATH, "ai_summary.json")) as f:
+        # read the file as json
+        articles = json.load(f)
+
+        for article in articles["news"]:
+            news.append(
+                """
+                Title: {title}
+                Summary: {summary}
+                """.format(
+                    title=article["title"],
+                    summary=article["summary"],
+                )
+            )
+
+    print(f"{len(news)} NEWS loaded")
+
+    return news
+
+
 if __name__ == '__main__':
-        test_ticker()
+    tickers = load_tickers()
+    ticker_extractor = Ticker(recreate_table=True)
+    ticker_extractor.insert_documents(tickers)

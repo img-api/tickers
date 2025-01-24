@@ -5,11 +5,12 @@ import uvicorn
 from fastapi import FastAPI
 from google.oauth2 import service_account
 
-from tickers import Ticker, load_tickers
+from tickers import Ticker, load_tickers, load_news
 
 
-recipes = load_tickers()
-recipe = Ticker(recipes)
+tickers = load_tickers()
+news = load_news()
+ticker_extractor = Ticker(tickers, news)
 
 app = FastAPI()
 
@@ -34,15 +35,9 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/recommend_recipe")
-async def root(ingredients: str | None = "", image: int | None = None):
-    if image:
-        image_ingredients = recipe.get_image_ingredients(image)
-    else:
-        image_ingredients = ""
-    ingredients = f"{ingredients}, {image_ingredients}"
-
-    return recipe.get_recipe(ingredients)
+@app.post("/tickers")
+async def root(title: str = "", summary: str = ""):
+    return ticker_extractor.get_tickers(title, summary)
 
 
 def start():
