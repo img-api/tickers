@@ -1,7 +1,7 @@
-data/
 .task
 *.json
 .ruff_cache
 .venv
 .env
 __pycache__
+

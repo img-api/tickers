@@ -29,14 +29,21 @@ with open(google_credentials, 'r') as source:
 service_account.Credentials.from_service_account_info(info)
 
 
-@app.get("/")
-async def root():
-    return ticker_extractor.get_tickers()
+#@app.get("/")
+#async def root():
+#    return ticker_extractor.get_tickers()
 
 
 @app.post("/tickers")
 async def root(title: str = "", summary: str = ""):
-    return ticker_extractor.get_tickers(title, summary)
+
+    ret = {
+        'title': title,
+        'summary': summary,
+        'tickers': ticker_extractor.get_tickers(title, summary)
+    }
+
+    return ret
 
 
 def start():
