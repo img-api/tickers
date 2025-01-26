@@ -1,0 +1,82 @@
+{
+    "api": "0.54pa",
+    "is_anon": true,
+    "news": [
+        {
+            "AI": {
+                "actions_required": "Read the article for more information about Service Corporation International (NYSE:SCI) stock performance.",
+                "article_icon": "meh-blank",
+                "classification": "finance",
+                "company_list": [
+                    "Service Corporation International"
+                ],
+                "defcon_alert": "**11% CAGR over 5 years** \ud83d\ude80\ud83d\udcb8. Shareholders of Service Corporation International (NYSE:SCI) have earned an average annual return of 11%.",
+                "defcon_level": "3",
+                "defcon_outcome": "Good outcome",
+                "gif_keywords": "stock market, finance, investing",
+                "interest_score": 8,
+                "model": "llama3.1",
+                "no_bullshit": "",
+                "paragraph": "",
+                "process_time": 17.36,
+                "sentiment": "neutral",
+                "sentiment_score": 0,
+                "summary": "Service Corporation International (SCI) has provided its shareholders with an impressive 11% Compound Annual Growth Rate (CAGR) over the past five years. This achievement is remarkable, especially considering the average market return of 10%. While SCI's share price may have risen only 9.4% in the last year, its long-term performance is indeed noteworthy. As we delve deeper into the company's financials and growth prospects, it becomes clear that SCI has been making progress towards a sustainable future.",
+                "tickers_list": [
+                    "SCI"
+                ],
+                "title": "|Service Corporation International (NYSE:SCI) shareholders have earned a 11% CAGR over the last five years|",
+                "title_clickbait": "|11% CAGR?! Service Corporation International (SCI) Shareholders Have Been Raking It In For Years!|",
+                "tools": [
+                    "set_article_information",
+                    "send_portfolio_alert",
+                    "set_sentiment_icon",
+                    "set_summary_info"
+                ]
+            },
+            "ai_summary": "**Key Points**\n\n\ud83d\udcc8 Service Corporation International (NYSE:SCI) has seen its share price rise 58% over the last five years, below the market average.\n\n\ud83d\udcb8 Over the same period, shareholders have earned a compound annual growth rate (CAGR) of 11%, driven by a 8.0% increase in earnings per share (EPS).\n\n**Analysis**\n\nThe company's EPS growth has been reasonably close to the share price growth, indicating that investor sentiment towards SCI has not changed significantly.\n\n\ud83d\udcb0 However, when considering total shareholder return (TSR), which includes dividends, SCI has delivered a TSR of 71% over the last five years, exceeding its share price return. This suggests that dividend payments have contributed to the difference between TSR and share price return.\n\n**Warning Signs**\n\n\u274c Despite the strong TSR, there are 2 warning signs in our investment analysis for Service Corporation International, including 1 significant concern that should not be ignored...",
+            "ai_upload_date": 1737538958.483,
+            "articles": [
+                "Service Corporation International (NYSE:SCI) shareholders have earned a 11% CAGR over the last five years\neditorial-team@simplywallst.com (Simply Wall St)\nJune 16, 2024 3 min read\nIn This Article:\nSCI\n+1.10%\nWhen you buy and hold a stock for the long term, you definitely want it to provide a positive return. But more than that, you probably want to see it rise more than the market average. But Service Corporation International (NYSE:SCI) has fallen short of that second goal, with a share price rise of 58% over five years, which is below the market return. Over the last twelve months the stock price has risen a very respectable 9.4%.\nWith that in mind, it's worth seeing if the company's underlying fundamentals have been the driver of long term performance, or if there are some discrepancies.\nSee our latest analysis for Service Corporation International\nThere is no denying that markets are sometimes efficient, but prices do not always reflect underlying business performance. One way to examine how market sentiment has changed over time is to look at the interaction between a company's share price and its earnings per share (EPS).\nDuring five years of share price growth, Service Corporation International achieved compound earnings per share (EPS) growth of 8.0% per year. This EPS growth is reasonably close to the 10% average annual increase in the share price. This indicates that investor sentiment towards the company has not changed a great deal. In fact, the share price seems to largely reflect the EPS growth.\nThe company's earnings per share (over time) is depicted in the image below (click to see the exact numbers).\nNYSE:SCI Earnings Per Share Growth June 16th 2024\nWe know that Service Corporation International has improved its bottom line lately, but is it going to grow revenue? If you're interested, you could check this free report showing consensus revenue forecasts.\nWhat About Dividends?\nIt is important to consider the total shareholder return, as well as the share price return, for any given stock. Whereas the share price return only reflects the change in the share price, the TSR includes the value of dividends (assuming they were reinvested) and the benefit of any discounted capital raising or spin-off. It's fair to say that the TSR gives a more complete picture for stocks that pay a dividend. In the case of Service Corporation International, it has a TSR of 71% for the last 5 years. That exceeds its share price return that we previously mentioned. And there's no prize for guessing that the dividend payments largely explain the divergence!\nA Different Perspective\nService Corporation International provided a TSR of 11% over the last twelve months. Unfortunately this falls short of the market return. If we look back over five years, the returns are even better, coming in at 11% per year for five years. Maybe the share price is just taking a breather while the business executes on its growth strategy. While it is well worth considering the different impacts that market conditions can have on the share price, there are other factors that are even more important. Even so, be aware that Service Corporation International is showing 2 warning signs in our investment analysis , and 1 of those shouldn't be ignored...\nStory Continues\n\n\nTerms\nand\nPrivacy Policy\nPrivacy & Cookie Settings\nRecommended Stories\nWe\u02bcre unable to load stories right now."
+            ],
+            "blocked_by": [],
+            "creation_date": 1737538950.031,
+            "external_uuid": "4166c8a4-86b9-3eb4-ac60-52b83aea7232",
+            "force_reindex": false,
+            "id": "6790bd864eb6c659310c0d91",
+            "interest_score": 8,
+            "is_blocked": false,
+            "is_chromadb": true,
+            "languages": [],
+            "last_cache_date": 1737539220.052,
+            "last_visited_date": 1737539073.548,
+            "last_visited_verbose": "2025/01/22, 09:44:33",
+            "link": "https://finance.yahoo.com/news/corporation-international-nyse-sci-shareholders-122556423.html",
+            "named_exchange_tickers": {
+                "NYSE:SCI": "Service Corporation International"
+            },
+            "no_comments": 0,
+            "publisher": "Simply Wall St.",
+            "raw_data_id": "6790bd864eb6c659310c0d90",
+            "raw_tickers": [
+                "NYSE:SCI"
+            ],
+            "related_exchange_tickers": [
+                "NYSE:SCI"
+            ],
+            "sentiment_score": 0,
+            "source": "YFINANCE",
+            "source_title": "Service Corporation International (NYSE:SCI) shareholders have earned a 11% CAGR over the last five years",
+            "status": "PROCESSED",
+            "stock_price": 77.78,
+            "summary": "When you buy and hold a stock for the long term, you definitely want it to provide a positive return. But more than...",
+            "thumbnail": "https://media.zenfs.com/en/simply_wall_st__316/6ab18196d6ec761f9ba75009bcc254c6",
+            "thumbnail_caption": "",
+            "title": "|Service Corporation International (NYSE:SCI) shareholders have earned a 11% CAGR over the last five years|",
+            "validate": false
+        }
+    ],
+    "status": "success",
+    "time": "2025-01-23 14:30:40.338216",
+    "timestamp": 1737642640
+}

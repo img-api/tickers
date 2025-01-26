@@ -1,5 +1,4 @@
 .task
-*.json
 .ruff_cache
 .venv
 .env
