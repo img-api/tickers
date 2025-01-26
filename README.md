@@ -23,8 +23,9 @@ You need to have the following installed
 Using command-line:
 
 - Run 'poetry shell' in the root folder.
-- Navigate to the folder 'src/whats_for_dinner'
+- Navigate to the folder 'src/ticker_extractor'
 - customize the .env file indicating your local IP
+- Load tickers in the database with command `python3 tickers.py`
 - Run 'fastapi dev main.py' or 'fastapi run main.py' for starting the web server
 
 
