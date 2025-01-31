@@ -7,8 +7,8 @@ readme = "README.md"
 packages = [{ include = "whats_for_dinner", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-haystack-ai = "2.2.4"
+python = ">=3.11,<3.13"
+haystack-ai = "2.9.0"
 fastapi = "^0.111.0"
 psycopg2-binary = "^2.9.9"
 pillow = "^10.4.0"

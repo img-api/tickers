@@ -8,7 +8,7 @@ BASE_URL = "http://localhost:8000"
 @pytest.fixture(scope="session")
 def client():
     """Creates an HTTPX test client."""
-    with httpx.Client(base_url=BASE_URL) as client:
+    with httpx.Client(base_url=BASE_URL, timeout=30) as client:
         yield client
 
 
