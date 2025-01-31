@@ -50,16 +50,20 @@ class Ticker:
         Context: 
 
         {% for document in documents %}
-            :
             {{ document.content }}
 
         {% endfor %}
 
         Question: Could you extract all the stock tickers from the this article?
+        Get the stock ticker from the names of the companies related to the article, even if the ticker it's not present.
+
+        Article:
 
         {{ news }}
 
-        Return the stock tickers separated by commas.
+        End of article.
+
+        Return the stock tickers separated by commas, without spaces.
 
         """
         pipe = Pipeline()
@@ -87,9 +91,15 @@ class Ticker:
                 "answer_builder": {"query": news},
             }
         )
-        tickers = result["answer_builder"]["answers"][0].data
-        print(tickers)
-        return tickers
+        
+        try:
+            tickers = result["answer_builder"]["answers"][0].data
+        except IndexError as e:
+            print(e)
+            tickers = None
+
+        # return tickers as a list
+        return tickers.strip().split(",") if tickers else []
 
     def insert_documents(self, contents):
         print("INSERTING DOCUMENTS")
