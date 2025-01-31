@@ -23,6 +23,7 @@ hatch = "^1.14.0"
 google-auth = "^2.37.0"
 pytest = "^8.3.4"
 httpx = "^0.28.1"
+ollama-haystack = "^2.3.0"
 
 
 [build-system]
