@@ -3,6 +3,7 @@ import os
 import json
 import uvicorn
 from fastapi import FastAPI
+from pydantic import BaseModel
 from google.oauth2 import service_account
 
 from tickers import Ticker, load_news
@@ -10,6 +11,12 @@ from tickers import Ticker, load_news
 
 news = load_news()
 ticker_extractor = Ticker(news=news, recreate_table=False)
+
+
+class Summary(BaseModel):
+    title: str
+    summary: str
+
 
 app = FastAPI()
 
@@ -34,13 +41,15 @@ service_account.Credentials.from_service_account_info(info)
 #    return ticker_extractor.get_tickers()
 
 
+
+
 @app.post("/tickers")
-async def root(title: str = "", summary: str = ""):
+async def root(summary: Summary):
 
     ret = {
-        'title': title,
-        'summary': summary,
-        'tickers': ticker_extractor.get_tickers(title, summary)
+        'title': summary.title,
+        'summary': summary.summary,
+        'tickers': ticker_extractor.get_tickers(summary.title, summary.summary)
     }
 
     return ret
